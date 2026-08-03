@@ -40,6 +40,11 @@ class HandTracker:
     hand = self.result.hand_landmarks[0]
     return [(int(lm.x * w), int(lm.y * h)) for lm in hand]
 
+  def is_left_hand(self):
+    if not self.result or not self.result.handedness:
+        return False
+    return self.result.handedness[0][0].category_name == "Left"
+
 
 if __name__ == "__main__":
     hand_tracker = HandTracker()
