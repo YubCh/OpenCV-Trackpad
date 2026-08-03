@@ -13,6 +13,7 @@ class HandTracker:
       min_hand_detection_confidence=detection_conf,
       min_tracking_confidence=tracking_conf,
       )
+    self.result = None
     self.landmarker = mp.tasks.vision.HandLandmarker.create_from_options(landmarker_option)
 
   def find_hand(self, frame):
@@ -31,6 +32,13 @@ class HandTracker:
         y = int(landmark.y * h)
         cv2.circle(frame, (x, y), 5, (0, 255, 0), -1)
     return frame
+  
+  def get_positions(self, frame):
+    h, w = frame.shape[:2]
+    if not self.result or not self.result.hand_landmarks:
+      return []
+    hand = self.result.hand_landmarks[0]
+    return [(int(lm.x * w), int(lm.y * h)) for lm in hand]
 
 
 if __name__ == "__main__":
