@@ -1,4 +1,4 @@
-
+import math
 
 
 #     return in [thumb, index, middle, ring, pinky] form
@@ -29,3 +29,12 @@ class GestureRecognizer:
       else:
         res[int(i/4) - 1] = 1 
     return res
+
+  def distance(self, positions, idx_a, idx_b):
+    if not positions:
+      return 0
+    x1, y1 = positions[idx_a][0],positions[idx_a][1]
+    x2, y2 = positions[idx_b][0],positions[idx_b][1]
+    return math.hypot(x1 - x2, y1 - y2)
+
+
