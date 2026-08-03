@@ -1,4 +1,4 @@
-from hand_tracker import get
+
 
 
 #     return in [thumb, index, middle, ring, pinky] form
@@ -15,14 +15,17 @@ class GestureRecognizer:
 
   def fingers_up(self, positions, is_left):
     res = [0,0,0,0,0]
-    if is_left:
-      if position[4][0] < position[3][0] and position[4][0] < position[2][0]:
-        res = [1,0,0,0,0]
-      elif position[4][0] > position[3][0] and position[4][0] > position[2][0]:
-        res = [1,0,0,0,0]
+    if not positions:
+      return res
+    if is_left and positions[4][0] > positions[3][0] and positions[4][0] > positions[2][0]:
+        print("left hand rn")
+        res[0] = 1
+    elif not is_left and positions[4][0] < positions[3][0] and positions[4][0] < positions[2][0]:
+        print("right hand rn")
+        res[0] = 1
     for i in range(8, len(positions),4):
       if positions[i][1] > positions[i - 1][1] or positions[i][1] > positions[i - 2][1]:
-        res[(i/4) - 1] = True
+        res[int(i/4) - 1] = 0
       else:
-        res[(i/4) - 1] = False 
+        res[int(i/4) - 1] = 1 
     return res
