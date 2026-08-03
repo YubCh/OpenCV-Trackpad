@@ -7,7 +7,7 @@ flatbuffers==25.12.19
 fonttools==4.63.0
 kiwisolver==1.5.0
 matplotlib==3.11.1
-mediapipe==0.10.35
+mediapipe==1.0.0
 MouseInfo==0.1.3
 numpy==2.5.1
 opencv-contrib-python==5.0.0.93
