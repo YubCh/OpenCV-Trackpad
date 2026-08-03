@@ -5,8 +5,8 @@ import cv2
 
 class Camera:
 
-  #TODO somehow sometimes my iphone camera turns on. Need to do something with camera_index
-  def __init__(self, camera_index=0, width=640, height=480):
+   #camera_index = 0 -> binds to phone if mac is connected to ios
+  def __init__(self, camera_index=1, width=640, height=480):
     self.cap = cv2.VideoCapture(camera_index)
     self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -22,7 +22,6 @@ class Camera:
 
   def release(self):
      self.cap.release()
-
 
 
 
