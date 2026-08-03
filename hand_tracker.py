@@ -43,7 +43,7 @@ class HandTracker:
   def is_left_hand(self):
     if not self.result or not self.result.handedness:
         return False
-    return self.result.handedness[0][0].category_name == "Left"
+    return not self.result.handedness[0][0].category_name == "Left"
 
 
 if __name__ == "__main__":
@@ -58,6 +58,8 @@ if __name__ == "__main__":
        hand_tracker.find_hand(frame)
        frame = hand_tracker.draw_landmarks(frame)
        cv2.imshow("Trackpad", frame)
+       print(f"is left? {hand_tracker.is_left_hand()}")
+       print(gesture.fingers_up(hand_tracker.get_positions, HandTracker.is_left_hand))
        if cv2.waitKey(1) == ord('q'):
         break
     cam.release()
