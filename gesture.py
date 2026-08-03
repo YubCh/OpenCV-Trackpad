@@ -59,7 +59,7 @@ class GestureRecognizer:
     elif fingers == [0,1,1,0,0]:
       return ("move", positions[8])
     return ("idle", None)  
-
+    #maybe need to make drag and zoom laterq
   
 
 
