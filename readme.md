@@ -36,7 +36,7 @@ Webcam frames -> MediaPipe detects 21 hand landmarks -> gesture recognition clas
 
 
 ## Setup
-```
+```bash
 python -m venv venv
 
 source venv/bin/activate
