@@ -3,7 +3,7 @@ import numpy as np
 
 
 class MouseController:
-  def __init__(self, cam_width, cam_height, margin=200):
+  def __init__(self, cam_width, cam_height, margin=150):
     self.screen_w, self.screen_h = pyautogui.size()
     self.cam_w = cam_width
     self.cam_h = cam_height
@@ -35,3 +35,9 @@ class MouseController:
 
   def click(self, button):
     pyautogui.click(button=button)
+
+  def press(self, button):
+    pyautogui.mouseDown(button=button)
+  
+  def release(self, button):
+    pyautogui.mouseUp(button=button)
