@@ -1,6 +1,6 @@
 # OpenCV Virtual Trackpad
 
-Recently my touchpad broke due to water damage. To solve that Problem I made this small program that lets you control your mouse with your hand through a webcam: move the cursor, left/right click, and drag - no additional hardware than a webcam needed
+Recently my touchpad broke due to water damage. To solve that Problem I made this small program that lets you control your mouse with your hand through a webcam: move the cursor, left/right click, and drag - no additional hardware than a webcam needed.
 
 ## How it works
 
@@ -50,7 +50,7 @@ python main.py
 ```
 
 
-## Known issues / roadmap
+## Done / Roadmap
 
 
 - [x] Webcam capture module with mirroring
