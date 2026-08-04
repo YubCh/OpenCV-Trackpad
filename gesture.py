@@ -47,19 +47,26 @@ class GestureRecognizer:
     fingers = self.fingers_up(positions, is_left)
     dist_thumb_index = self.distance(positions,4,8)
     dist_thumb_middle = self.distance(positions,4,12)
-    self.left_pinch_active = False
-    self.right_pinch_active= False
+    
 
-    if dist_thumb_index < 50 and fingers[2] == 1:
+    if dist_thumb_index < 50 and fingers[2] == 1 and not self.left_pinch_active:
       self.left_pinch_active = True
-      return ("left", positions[8])
-    elif dist_thumb_middle < 50 and fingers[1] == 1:
+      return ("left_down", positions[8])
+    elif dist_thumb_index < 55 and fingers[2] == 1 and self.left_pinch_active:
+      return ("move", positions[12])
+    elif dist_thumb_index >= 55 and self.left_pinch_active:
+      self.left_pinch_active = False
+      return ("left_up", positions[8])
+    elif dist_thumb_middle < 50 and fingers[1] == 1 and not self.right_pinch_active:
       self.right_pinch_active = True
       return ("right", positions[12])
+    elif dist_thumb_middle >= 55 and self.right_pinch_active:
+      self.right_pinch_active = False
+      return ("move", positions[12])
     elif fingers == [0,1,1,0,0]:
-      return ("move", positions[8])
+      return ("move", positions[12])
     return ("idle", None)  
-    #maybe need to make drag and zoom laterq
+
   
 
 
